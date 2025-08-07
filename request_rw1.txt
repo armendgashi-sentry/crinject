@@ -1,0 +1,20 @@
+POST /api/llm HTTP/2
+Host: lutia.ai
+Cookie: color-scheme=light; _ga=GA1.1.2119777498.1753707004; __stripe_mid=4b102c38-fe23-4d57-8e31-4573423aabda7ff7bc; __Secure-authjs.callback-url=https%3A%2F%2Flutia.ai; _ga_WS8E8P29W4=GS2.1.s1753950921$o3$g0$t1753950921$j60$l0$h0; __stripe_sid=91aea000-7014-4c9e-85c5-c73e48f0588fa02273; __Secure-authjs.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwia2lkIjoidWpFNlNlb000eE1tRHpVS2J6TjdfSWRWQUNMUS1RYVNOSHZyQzc3RkRBeTYyR29lbXBmbEkxT3dKeTQ1TF84M2c3blJMcEl6aW9KbFNzcXhuUG8tb2cifQ..YFlhUE4yGfcw84s-QdKAHw.EMBCMPRKkdGX5N3h5Wop1ZHrbtPGXkR-AfM55H3eYUbzYpfsq3RsYU0tOSF2FK5mX0rZegk5Lw7Fd8LMKKxT4sWmopG105qtgc9flAGifqiuyUjZ3rfVrgi71PhLvXEi_D4MGAeW6whxvhs2Rlng8K71qkJcqnzUjzzXZN6j4dz_p2x-zj6ZB7oeiW6xWgzjlvPp8Gp5wXmDFmHq-YIEAopb6BkWMLQCbv8DxDTi9TOcxWTMHN3flFP5M-ttdXi6rDDVLc5oQd2TkHjlBeI6re48iim-G4rvPUPy0Y8roQIBnUf7MiTOrr3cAOWO3LKTPn4q_LRy_coPNPS-ZEe5sHO06IkNZSlcDBKsJwowS6w.NilGa6Urxk5yf07OnBNswUpJvHegkxUu74Ol6RGRoN0
+Content-Length: 342
+Sec-Ch-Ua-Platform: "macOS"
+Accept-Language: en-US,en;q=0.9
+Sec-Ch-Ua: "Not)A;Brand";v="8", "Chromium";v="138"
+Content-Type: application/json
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: */*
+Origin: https://lutia.ai
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://lutia.ai/chat/new
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+{"plainTextPrompt":"\"howdyAgentTtt\"","promptStr":"[{\"role\":\"user\",\"content\":\"howdyAgentTtt\"},{\"role\":\"user\",\"content\":\"howdyAgentTtt\"}]","modelStr":"\"Claude_3_7_Sonnet\"","imagesStr":"[]","filesStr":"[]","provider":"anthropic","reasoningOn":false,"webSearchOn":false,"conversationId":"1f76ca1b-3da2-4db4-be12-28e57d89a567"}

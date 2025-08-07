@@ -1,0 +1,20 @@
+2025-08-07 01:55:40,776 [INFO] security_agents.request_analyzer: [AGENT OUTPUT] {'content_type': 'application/json', 'injection_points': [{'path': 'messages[0].role', 'parameter_type': 'json'}], 'body_with_wildcard': '{"messages":[{"content":"Write a Python function that adds two numbers.","role":"*"}]}', 'notes': "The common injection point for role-based attacks in typical chat/completion APIs is 'role' under each message object. Here, 'role' is not present, so the field is injected with the wildcard. This covers scenarios where the backend might use or process implicit roles even if not explicitly sent."}
+2025-08-07 01:55:40,777 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=system] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "system"}]}
+2025-08-07 01:55:40,777 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,868 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=system, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:40,868 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=assistant] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "assistant"}]}
+2025-08-07 01:55:40,868 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,875 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=assistant, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:40,875 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=developer] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "developer"}]}
+2025-08-07 01:55:40,875 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,884 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=developer, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:40,885 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=systeminvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "systeminvalidrole"}]}
+2025-08-07 01:55:40,885 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,892 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=systeminvalidrole, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:40,892 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=assistantinvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "assistantinvalidrole"}]}
+2025-08-07 01:55:40,892 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,898 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=assistantinvalidrole, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:40,898 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=developerinvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "developerinvalidrole"}]}
+2025-08-07 01:55:40,898 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-08-07 01:55:40,904 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=developerinvalidrole, status=500, body[:500]=Internal Server Error
+2025-08-07 01:55:44,489 [INFO] security_agents.role_fuzz: [RoleFuzz] === Round 1/2 ===

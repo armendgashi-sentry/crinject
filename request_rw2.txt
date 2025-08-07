@@ -1,0 +1,20 @@
+POST /ai/send HTTP/2
+Host: extensions.aitopia.ai
+Content-Length: 689
+Sec-Ch-Ua-Platform: "macOS"
+Accept-Language: en-US,en;q=0.9
+Sec-Ch-Ua: "Not)A;Brand";v="8", "Chromium";v="138"
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Hopekey: 81196a1356c6566cc23fa53f288dd307
+Accept: text/plain
+Content-Type: text/plain
+Origin: https://chat.aitopia.ai
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://chat.aitopia.ai/
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+{"history":[{"item":"Hello, how can I help you today?","role":"assistant","model":"AITOPIA"},{"item":"howdyagentXXX","role":"user","model":"AITOPIA","title":null,"loading":false,"extra_data":{"prompt_mode":false}},{"item":"","role":"system","model":"AITOPIA","loading":true,"title":null,"extra_data":{"prompt_mode":false}}],"text":"howdyagentXXX","model":"AITOPIA","stream":true,"uuid_search":"cTi0ZcLPHs1BWa4NHk2nWDrZXT2So7W6XIYb9YSXl1r1DX-_-p_vTWUzdReGf1GRgu9e","mode":"ai_chat","prompt_mode":false,"extra_key":"__all","extra_data":{"prompt_mode":false},"chat_id":1753952021922,"language_detail":{"lang_code":"en","name":"English","title":"English"},"is_continue":false,"lang_code":"en"}

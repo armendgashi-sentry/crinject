@@ -1,0 +1,20 @@
+POST /api/pg/chat/ HTTP/2
+Host: fusion.prod.emboldhealth.com
+Content-Length: 264
+Sec-Ch-Ua-Platform: "macOS"
+Authorization: Token d3d2ac680a2fba072de7cb9b969be3c13ece59f6
+Accept-Language: en-US,en;q=0.9
+Sec-Ch-Ua: "Not)A;Brand";v="8", "Chromium";v="138"
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: application/json, text/plain, */*
+X-Integration-Token: e06a7a59-e16c-4ebd-9a6c-3cb606d4dce4
+Content-Type: application/json
+Origin: https://embold.emboldhealth.com
+Sec-Fetch-Site: same-site
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+{"messages":[{"role":"user","content":"what are the some common causes of heart attack?"}],"chatKey":"1991f031-a15c-4d7f-a59a-ba5510be4f99","networkSlug":"embold","scenarioId":null,"dismiss_emergency":false,"analyzeSeparately":true,"city":"Nashville","state":"TN"}

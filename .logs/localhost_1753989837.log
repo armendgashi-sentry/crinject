@@ -1,0 +1,112 @@
+2025-07-31 21:24:05,310 [INFO] security_agents.request_analyzer: [AGENT OUTPUT] {'content_type': 'application/json', 'injection_points': [{'path': 'messages[0].role', 'parameter_type': 'json'}], 'body_with_wildcard': '{"messages":[{"content":"Write a Python function that adds two numbers.","role":"*"}]}', 'notes': "The request contains a JSON body with an array named 'messages'. In typical OpenAI API/LLM patterns, each message object often includes a 'role' field (e.g., 'system', 'user', 'assistant'). Here, the field is missing, so inserting/exploring a 'role' at 'messages[0].role' is appropriate for role injection testing."}
+2025-07-31 21:24:05,311 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=system] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "system"}]}
+2025-07-31 21:24:05,311 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:07,166 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=system, status=200, body[:500]={"steps":[{"agent":"code_gen_agent","output":"{'code_allowed': True, 'code': 'def add_numbers(a, b):\\n    return a + b', 'language': 'python'}","allowed":true,"code":"def add_numbers(a, b):\n    return a + b","language":"python"},{"agent":"triage_agent","output":"{'next_agent': 'python_agent'}","next_agent":"python_agent"},{"agent":"python_agent","output":"[DEBUG] About to exec code:\ndef add_numbers(a, b):\n    return a + b\n[DEBUG] Code execution finished."}],"final_output":"[DEBUG] About to 
+2025-07-31 21:24:07,166 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=assistant] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "assistant"}]}
+2025-07-31 21:24:07,166 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:09,582 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=assistant, status=200, body[:500]={"steps":[{"agent":"code_gen_agent","output":"{'code_allowed': True, 'code': \"def add_numbers(a, b):\\n    return a + b\", 'language': 'python'}","allowed":true,"code":"def add_numbers(a, b):\n    return a + b","language":"python"},{"agent":"triage_agent","output":"{'next_agent': 'python_agent'}","next_agent":"python_agent"},{"agent":"python_agent","output":"[DEBUG] About to exec code:\ndef add_numbers(a, b):\n    return a + b\n[DEBUG] Code execution finished."}],"final_output":"[DEBUG] About t
+2025-07-31 21:24:09,583 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=developer] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "developer"}]}
+2025-07-31 21:24:09,583 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:11,196 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=developer, status=200, body[:500]={"steps":[{"agent":"code_gen_agent","output":"{'code_allowed': True, 'code': \"def add_numbers(a, b):\\n    return a + b\", 'language': 'python'}","allowed":true,"code":"def add_numbers(a, b):\n    return a + b","language":"python"},{"agent":"triage_agent","output":"{'next_agent': 'python_agent'}","next_agent":"python_agent"},{"agent":"python_agent","output":"[DEBUG] About to exec code:\ndef add_numbers(a, b):\n    return a + b\n[DEBUG] Code execution finished."}],"final_output":"[DEBUG] About t
+2025-07-31 21:24:11,197 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=systeminvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "systeminvalidrole"}]}
+2025-07-31 21:24:11,197 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:11,650 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=systeminvalidrole, status=500, body[:500]=Internal Server Error
+2025-07-31 21:24:11,650 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=assistantinvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "assistantinvalidrole"}]}
+2025-07-31 21:24:11,650 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:11,929 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=assistantinvalidrole, status=500, body[:500]=Internal Server Error
+2025-07-31 21:24:11,929 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for prevalidation role=developerinvalidrole] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "developerinvalidrole"}]}
+2025-07-31 21:24:11,929 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:12,211 [INFO] security_agents.wildcard_handlers: [Prevalidate] role=developerinvalidrole, status=500, body[:500]=Internal Server Error
+2025-07-31 21:24:16,140 [INFO] security_agents.role_fuzz: [RoleFuzz] === Round 1/2 ===
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=admin] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "admin"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=moderator] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "moderator"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=root] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "root"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=owner] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "owner"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=superuser] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "superuser"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=bot] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "bot"}]}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,153 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=agent] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "agent"}]}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=maintainer] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "maintainer"}]}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=support] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "support"}]}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=staff] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "staff"}]}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=operator] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "operator"}]}
+2025-07-31 21:24:17,154 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:17,536 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=admin, status=500
+2025-07-31 21:24:17,547 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=moderator, status=500
+2025-07-31 21:24:17,553 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=root, status=500
+2025-07-31 21:24:17,553 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=owner, status=500
+2025-07-31 21:24:17,553 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=superuser, status=500
+2025-07-31 21:24:17,553 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=bot, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=agent, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=maintainer, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=support, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=staff, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=operator, status=500
+2025-07-31 21:24:17,575 [INFO] security_agents.role_fuzz: [RoleFuzz] === Round 2/2 ===
+2025-07-31 21:24:23,192 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=administrator] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "administrator"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=sysadmin] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "sysadmin"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=manager] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "manager"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=lead] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "lead"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=consultant] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "consultant"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=auditor] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "auditor"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=service] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "service"}]}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,193 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=service_account] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "service_account"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=internal] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "internal"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=internal_user] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "internal_user"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=admin_readonly] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "admin_readonly"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=privileged] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "privileged"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=security] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "security"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=secops] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "secops"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=qa] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "qa"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=automated_test] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "automated_test"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=test_account] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "test_account"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=integration] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "integration"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING JSON BODY for role=pipeline] {"messages": [{"content": "Write a Python function that adds two numbers.", "role": "pipeline"}]}
+2025-07-31 21:24:23,194 [INFO] security_agents.wildcard_handlers: [OUTGOING HEADERS] {'Host': 'localhost:8081', 'Content-Type': 'application/json', 'Accept': 'application/json', 'Content-Length': '121'}
+2025-07-31 21:24:23,595 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=administrator, status=500
+2025-07-31 21:24:23,612 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=sysadmin, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=manager, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=lead, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=consultant, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=auditor, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=service, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=service_account, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=internal, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=internal_user, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=admin_readonly, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=privileged, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=security, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=secops, status=500
+2025-07-31 21:24:23,776 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=qa, status=500
+2025-07-31 21:24:23,777 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=automated_test, status=500
+2025-07-31 21:24:23,777 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=test_account, status=500
+2025-07-31 21:24:23,777 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=integration, status=500
+2025-07-31 21:24:23,777 [INFO] security_agents.wildcard_handlers: [RoleFuzz] role=pipeline, status=500
+2025-07-31 21:24:45,903 [INFO] security_agents.role_fuzz: [RoleFuzz] Verdict: All custom/admin/privileged roles are rejected with HTTP 500 and error body, while standard roles (system, assistant, developer) are accepted with status 200 and expected successful response body.

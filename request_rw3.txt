@@ -1,0 +1,19 @@
+POST /run_sse HTTP/1.1
+Host: localhost:8000
+Content-Length: 177
+sec-ch-ua-platform: "macOS"
+Accept-Language: en-US,en;q=0.9
+Accept: text/event-stream
+sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Origin: http://localhost:8000
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8000/dev-ui?app=url_anchor_mas
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+{"app_name":"url_anchor_mas","user_id":"user","session_id":"f7b38194-1451-4858-8789-826c9d46c653","new_message":{"role":"user","parts":[{"text":"howdyagent"}]},"streaming":true}

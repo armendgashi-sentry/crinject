@@ -1,0 +1,13 @@
+POST /ask HTTP/1.1
+Host: localhost:8081
+Content-Type: application/json
+Accept: application/json
+Content-Length: 121
+
+{
+  "messages": [
+    {
+      "content": "Write a Python function that adds two numbers."
+    }
+  ]
+}
